@@ -1,0 +1,14 @@
+{
+    "name": "com.mattrt13.listextension",
+    "version": "0.0.1",
+    "displayName": "ListExtension",
+    "description": "Des",
+    "dependencies": {},
+    "keywords": [
+        "list"
+    ],
+    "author": {
+        "name": "mattrt",
+        "email": "mehdiroozitalab13@gmail.com"
+    }
+}
