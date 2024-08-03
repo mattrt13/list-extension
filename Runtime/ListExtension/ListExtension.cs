@@ -36,10 +36,11 @@ namespace Utils
             if (match == null) throw new ArgumentNullException(nameof(match));
 
             List<T> result = new List<T>();
-            foreach (T item in list)
+            int counter = list.Count;
+            for (int i = 0; i < counter; i++)
             {
-                if (match(item))
-                    result.Add(item);
+                if (match(list[i]))
+                    result.Add(list[i]);
             }
 
             return result;
@@ -51,8 +52,9 @@ namespace Utils
             if (selector == null) throw new ArgumentNullException(nameof(selector));
 
             List<TResult> result = new List<TResult>();
-            foreach (T item in list)
-                result.Add(selector(item));
+            int counter = list.Count;
+            for (int i = 0; i < counter; i++)
+                result.Add(selector(list[i]));
 
             return result;
         }
