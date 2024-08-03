@@ -26,11 +26,35 @@ namespace Utils
             if (list == null) throw new ArgumentNullException(nameof(list));
             if (keySelector == null) throw new ArgumentNullException(nameof(keySelector));
 
-            List<T> sortedList = new List<T>(list);
-            sortedList.Sort((x, y) => keySelector(x).CompareTo(keySelector(y)));
-
             list.Sort((x, y) => keySelector(x).CompareTo(keySelector(y)));
-            return sortedList;
+            return list;
+        }
+
+        public static List<T> WhereCondition<T>(this List<T> list, Predicate<T> match)
+        {
+            if (list == null) throw new ArgumentNullException(nameof(list));
+            if (match == null) throw new ArgumentNullException(nameof(match));
+
+            List<T> result = new List<T>();
+            foreach (T item in list)
+            {
+                if (match(item))
+                    result.Add(item);
+            }
+
+            return result;
+        }
+
+        public static List<TResult> SelectCondition<T, TResult>(this List<T> list, Func<T, TResult> selector)
+        {
+            if (list == null) throw new ArgumentNullException(nameof(list));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
+
+            List<TResult> result = new List<TResult>();
+            foreach (T item in list)
+                result.Add(selector(item));
+
+            return result;
         }
     }
 }
